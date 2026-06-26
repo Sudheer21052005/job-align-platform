@@ -3,7 +3,6 @@
 **An intelligent job alignment platform powered by AI that matches job seekers with opportunities using resume and job analysis.**
 
 [![GitHub](https://img.shields.io/badge/GitHub-Sudheer21052005%2Fjob--align--platform-blue?logo=github)](https://github.com/Sudheer21052005/job-align-platform)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
 
 ---
