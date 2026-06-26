@@ -1,0 +1,23 @@
+﻿node.exe : error: 
+unknown option 
+'--json'
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" "C:
+\Users\Dell\AppData\R
+oaming\n ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (error:    
+ unknown option '    
+--json':String)     
+[], RemoteExcept    
+ion
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 

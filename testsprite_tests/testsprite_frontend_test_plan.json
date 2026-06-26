@@ -1,0 +1,606 @@
+[
+  {
+    "id": "TC001",
+    "title": "User Registration with Valid Email and Password",
+    "description": "Verify that a new user can register successfully with valid email, password, and required details.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the registration page."
+      },
+      {
+        "type": "action",
+        "description": "Enter valid email, full name, phone number, password, and select role (jobSeeker or recruiter)."
+      },
+      {
+        "type": "action",
+        "description": "Submit registration form."
+      },
+      {
+        "type": "assertion",
+        "description": "Check registration is successful and user receives confirmation email if applicable."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user can login immediately after registration."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "User Registration with Duplicate Email",
+    "description": "Verify that registration fails when attempting to register with an email that already exists.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the registration page."
+      },
+      {
+        "type": "action",
+        "description": "Enter an email address that is already registered."
+      },
+      {
+        "type": "action",
+        "description": "Fill other fields with valid data."
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure the application displays an error message about duplicate email."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that user is not registered again."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Successful Login with Registered User",
+    "description": "Verify that user can login with correct email and password and receive valid JWT token.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the login page."
+      },
+      {
+        "type": "action",
+        "description": "Enter valid registered email and password."
+      },
+      {
+        "type": "action",
+        "description": "Click login button."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify login is successful and JWT token is received and stored for authenticated sessions."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Login Failure with Incorrect Password",
+    "description": "Verify that login fails with an incorrect password and proper error message is displayed.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the login page."
+      },
+      {
+        "type": "action",
+        "description": "Enter registered email and incorrect password."
+      },
+      {
+        "type": "action",
+        "description": "Click login button."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify login fails with an error message indicating invalid credentials."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Password Reset Flow - Request Reset Link",
+    "description": "Verify that users can successfully initiate password reset and receive an email with reset link.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the forgot password page."
+      },
+      {
+        "type": "action",
+        "description": "Enter registered email address."
+      },
+      {
+        "type": "action",
+        "description": "Submit forgot password request."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that an email with the password reset link is sent to the user."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Password Reset Flow - Reset Password Using Valid Token",
+    "description": "Verify that user can reset password successfully using a valid password reset token.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the reset password page using valid reset password link."
+      },
+      {
+        "type": "action",
+        "description": "Enter new password and confirm password."
+      },
+      {
+        "type": "action",
+        "description": "Submit the reset password form."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user password is updated and user is able to login with new password."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Password Reset Flow - Reset Password Using Invalid or Expired Token",
+    "description": "Verify that password reset fails if the reset token is invalid or expired and proper error is shown.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to reset password page with invalid or expired token."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to reset password."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the application shows an error message indicating invalid or expired token and does not allow reset."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Job Seeker: Upload Valid Resume and AI Parsing",
+    "description": "Verify that job seeker can upload a valid resume file (PDF, DOC, DOCX) and the AI-powered parsing extracts and displays correct candidate information.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to profile or resume upload section."
+      },
+      {
+        "type": "action",
+        "description": "Upload a valid resume in PDF format containing education, skills, and experience."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that AI-powered resume analysis extracts education, skills, experience, certifications and displays parsed data accurately."
+      },
+      {
+        "type": "action",
+        "description": "Repeat upload with DOC and DOCX files."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm parsing success and correct details extraction for all supported file formats."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Job Seeker: Upload Invalid Resume Format",
+    "description": "Verify that uploading an unsupported or corrupted resume file results in a graceful error.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to upload a resume file with unsupported format (e.g. .txt, .exe)"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure an error message is displayed indicating invalid file format."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to upload a corrupted or unreadable resume file."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the system handles the error without crashing and notifies user."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Job Seeker: Browse Jobs with Filters",
+    "description": "Verify that job seekers can view and filter job listings correctly by location, salary, experience, job type, and skills.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to job listing page."
+      },
+      {
+        "type": "action",
+        "description": "Apply filters like location, minimum salary, experience level, job type, and required skills."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify displayed jobs match filter criteria."
+      },
+      {
+        "type": "action",
+        "description": "Clear filters."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all jobs are shown again."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Job Seeker: Save and Unsave Jobs",
+    "description": "Verify that job seekers can save jobs to favorites and remove them successfully.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Browse job listings and save a job."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the job appears in the saved jobs list."
+      },
+      {
+        "type": "action",
+        "description": "Unsave the previously saved job."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the job is removed from saved jobs list."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Job Seeker: Apply for a Job Successfully",
+    "description": "Verify that a job seeker can apply for a job using their uploaded resume and the application is recorded.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to a job detail page."
+      },
+      {
+        "type": "action",
+        "description": "Click on apply button using uploaded resume."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify application is submitted successfully and appears in applied jobs list."
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Job Seeker: Attempt Application Without Resume Upload",
+    "description": "Verify the system prevents job application if no resume is uploaded and prompts the user appropriately.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to apply for a job without uploading any resume."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that application is blocked with an error or prompt to upload a resume."
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Recruiter: Create New Job Listing with AI Job Analysis",
+    "description": "Verify recruiter can create a new job listing and the AI-powered job description analysis extracts requirements correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to post job form."
+      },
+      {
+        "type": "action",
+        "description": "Enter complete job details including title, description, company, location, skills required, experience, degree, certificates, etc."
+      },
+      {
+        "type": "action",
+        "description": "Submit job posting form."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify job is created and AI analysis has extracted job requirements and attributes correctly."
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Recruiter: Edit Existing Job Listing",
+    "description": "Verify recruiter can edit and update job listings and changes are saved successfully.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to recruiter job management page."
+      },
+      {
+        "type": "action",
+        "description": "Select a job and modify details such as description, salary, or expiry date."
+      },
+      {
+        "type": "action",
+        "description": "Submit updates."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify job listing is updated and changes persist."
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Recruiter: Close a Job Posting",
+    "description": "Verify a recruiter can mark a job as closed and the job is no longer open for applications.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to recruiter job listings."
+      },
+      {
+        "type": "action",
+        "description": "Mark a job as closed using appropriate UI control."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify job status changes to closed and applications are disabled for that job."
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Recruiter: View Applicants and Matching Scores",
+    "description": "Verify recruiter can view all applicants for a job and AI-generated detailed candidate-job matching scores and summaries.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to job applicants page for a specific open job."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify list of applicants is displayed with attached resumes."
+      },
+      {
+        "type": "action",
+        "description": "Select an applicant to view detailed AI matching scores and summary comments."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm overall score and detailed scores match expected formats and are accurate."
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Role-Based Access Control Enforcement",
+    "description": "Verify that pages, API endpoints, and actions are restricted based on user roles (jobSeeker or recruiter).",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as a job seeker and attempt to access recruiter-only pages and APIs."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is denied with appropriate unauthorized messages."
+      },
+      {
+        "type": "action",
+        "description": "Login as a recruiter and attempt to access job seeker only pages (like applied jobs or saved jobs)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify access is denied appropriately."
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "AI Assistant: Request Job Search Help",
+    "description": "Verify that job seekers can use the AI assistant to get job search help and receive meaningful responses.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to AI assistant interface."
+      },
+      {
+        "type": "action",
+        "description": "Submit job search queries or requests for interview tips."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the system returns helpful AI-generated assistance promptly."
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Company Profile Management by Recruiter",
+    "description": "Verify that recruiters can create, update, and view company profiles and associate jobs with companies.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to company creation form."
+      },
+      {
+        "type": "action",
+        "description": "Create a company profile with required details."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the company is created and visible in company listings."
+      },
+      {
+        "type": "action",
+        "description": "Edit the created company profile."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm changes are saved and reflected."
+      },
+      {
+        "type": "action",
+        "description": "Post a job and associate it with the created company."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify job shows correct company association."
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "API Endpoint Security and Load Handling",
+    "description": "Verify all API endpoints enforce authentication, authorization, input validation and respond correctly under simulated high load.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Call each API endpoint without authentication and verify access is denied."
+      },
+      {
+        "type": "action",
+        "description": "Call each API endpoint with valid JWT and verify proper responses."
+      },
+      {
+        "type": "action",
+        "description": "Perform calls with invalid, expired JWT and verify rejection."
+      },
+      {
+        "type": "action",
+        "description": "Simulate high concurrent load on critical endpoints (login, job search, resume upload) and monitor API latency."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure API latency is under 2 seconds and no errors due to load."
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "User Profile Management - Edit Profile and Change Password",
+    "description": "Verify users can successfully update profile information and change their password securely.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login and navigate to profile edit page."
+      },
+      {
+        "type": "action",
+        "description": "Edit profile fields such as full name, phone number, and profile picture."
+      },
+      {
+        "type": "action",
+        "description": "Submit changes and verify updates persist."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to change password page."
+      },
+      {
+        "type": "action",
+        "description": "Enter old password and new password, then submit."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify password is changed and user can login using the new password."
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Performance: Page Load Time under 3 Seconds",
+    "description": "Verify that critical frontend pages (Dashboard, Job Listings, Job Details) load within 3 seconds under normal network conditions.",
+    "category": "performance",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open major frontend pages: DashboardPage, JobListingPage, JobDetailsPage."
+      },
+      {
+        "type": "assertion",
+        "description": "Measure page load time and confirm it is under 3 seconds."
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Security: Input Sanitization and Validation on All User Inputs",
+    "description": "Verify the application sanitizes and validates all user inputs to prevent injection attacks and malformed data.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to submit inputs with scripts, SQL injections, and special characters in forms like registration, job posting, and resume upload."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure inputs are sanitized, invalid entries are rejected and no backend errors or security breaches occur."
+      }
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS files
+.DS_Store
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+server_log.txt
+
+# Test outputs
+analyzer_test_output*.txt
+test_results/
+
+# Temporary files
+.kilocode/
+tmp/
+temp/
+
+# Database files (if local)
+*.db
+*.sqlite
+
+# IDE
+.vscode
+.idea
+*.code-workspace
