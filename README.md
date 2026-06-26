@@ -347,33 +347,16 @@ Contributions are welcome! Please follow these steps:
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 📞 Support & Contact
 
 - **GitHub Issues**: [Report bugs](https://github.com/Sudheer21052005/job-align-platform/issues)
-- **Email**: sudheer@example.com
-- **Documentation**: Check `/docs` folder for detailed guides
+- **Email**: sudheerprajapti0@gmail.com
 
 ---
 
-## 🎯 Roadmap
-
-- [ ] Mobile app (React Native)
-- [ ] Video interview integration
-- [ ] Advanced analytics dashboard
-- [ ] Salary negotiation AI assistant
-- [ ] LinkedIn profile synchronization
-- [ ] Multi-language support
-- [ ] Blockchain-based credential verification
-
----
 
 ## 🙏 Acknowledgments
 
